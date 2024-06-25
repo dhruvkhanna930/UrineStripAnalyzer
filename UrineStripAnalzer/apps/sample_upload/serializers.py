@@ -10,7 +10,7 @@ class UploadedImageSerializer(serializers.ModelSerializer):
     def validate(self, data):
         image = data.get('image')
         if image.size > 1024 * 1024 * 3:
-            raise ValidationError("File size should not exceed 3 MB")
+            raise ValidationError("Image size should not exceed 3 MB")
         return data
 
     def create(self, validated_data):
