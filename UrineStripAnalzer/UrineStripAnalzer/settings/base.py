@@ -41,6 +41,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'apps.sample_upload',
+    'apps.api',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -72,7 +73,7 @@ ROOT_URLCONF = 'UrineStripAnalzer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],''
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
