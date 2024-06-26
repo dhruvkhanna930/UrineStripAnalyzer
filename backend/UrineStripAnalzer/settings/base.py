@@ -73,9 +73,14 @@ MIDDLEWARE = [
 # Allow all origins for development purposes
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
+    'http://localhost',
+    'http://127.0.0.1',
+    'http://0.0.0.0',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'UrineStripAnalzer.urls'
 
