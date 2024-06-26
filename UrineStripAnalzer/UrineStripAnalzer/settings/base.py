@@ -37,6 +37,7 @@ SITE_ID = 1
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'corsheaders',
 ]
 
 LOCAL_APPS = [
@@ -59,6 +60,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -68,12 +70,19 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Allow all origins for development purposes
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 ROOT_URLCONF = 'UrineStripAnalzer.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],''
+        'DIRS': [],''
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -2,12 +2,15 @@ import cv2
 import numpy as np
 
 
+
+
 def analyze_colors(filepath):
     # Load the image
     image = cv2.imread(filepath)
 
     # Check if image is loaded
     if image is None:
+        print(filepath)
         raise FileNotFoundError(f"Image at path {filepath} not found")
 
     # Resize the image for easier processing
