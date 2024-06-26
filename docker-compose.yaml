@@ -1,29 +1,39 @@
-version : '3.7'
+version: '3.8'
 
 services:
   backend:
-    volumes:
-      - static:/static
-    env_file:
-      - .env
     build: 
       context: ./backend
+    container_name: backend
     ports:
       - "8000:8000"
-    expose:
-      - 8000
-      
+    environment:
+      - POSTGRES_DB=urineStripAnalyzer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=King@2203
+    depends_on:
+      - db
+
   frontend:
-    build:
+    build: 
       context: ./frontend
-    volumes:
-      - frontend:/app/build
-    restart: always
+    container_name: frontend
     ports:
-      - "127.0.0.1:5173:5173"
-    expose:
-      - 5173
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:15
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=urineStripAnalyzer
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=King@2203
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  static:
-  frontend:
+  postgres_data:
