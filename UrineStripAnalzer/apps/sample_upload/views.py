@@ -13,7 +13,9 @@ import json
 @api_view(['POST'])
 def upload_image_api(request):
     if request.method == 'POST':
-        image = request.FILES.get('image')
+        # print(request.POST.items())
+        # json_data = json.loads(request.body)
+        image = request.FILES.get('file')
         # print(image)
         if(image):
             uploaded_image = UploadedImage.objects.create(image=image)
@@ -22,7 +24,7 @@ def upload_image_api(request):
                 path = os.path.join(settings.BASE_DIR,'mediafiles',str(uploaded_image))
                 result = analyze_colors(path)
                 result = json.dumps(result)
-                return Response({
+                return JsonResponse({
                 "success": "true",
                 "code": 200,
                 "result": result,
