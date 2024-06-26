@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import axios from "axios";
 import "./ImageUpload.css";
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Environment } from '@react-three/drei';
+import Bug from "/public/Bug.jsx";
+
+
 
 import {
   Box,
@@ -181,6 +186,14 @@ const Home = () => {
   return (
     <>
       <div>
+        <Canvas>
+            <ambientLight/>
+            <OrbitControls enableZoom={false} enableDamping={false}/>
+            <Suspense fallback={null}>
+                <Bug/>
+            </Suspense>
+            <Environment preset="sunset"/>
+        </Canvas>
         <h1 className="heading">Urine Strip Analyzer</h1>
       </div>
       <Box width="95vw" ml="auto" mr="auto" mt="2rem">
@@ -257,6 +270,7 @@ const Home = () => {
           </Flex>
         </Flex>
       </Box>
+      <h3>Made with ❤️ : Dhruv</h3>
     </>
   );
 };

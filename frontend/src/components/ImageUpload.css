@@ -44,3 +44,10 @@
 .heading:hover::before {
   width: 100%;
 }
+
+
+
+canvas{
+    height: 5rem !important;
+    width: 30rem;
+}
