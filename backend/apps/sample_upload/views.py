@@ -10,6 +10,10 @@ from django.conf import settings
 import os
 import json
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 @api_view(['POST'])
 def upload_image_api(request):
     if request.method == 'POST':
