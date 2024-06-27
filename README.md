@@ -57,6 +57,13 @@ This project is a web application designed to analyze images of urine strips, id
    - URL: http://localhost:8000/admin/
    - Use the superuser credentials created in the previous step.
 
+6. Database Initialization:
+    ```bash
+   docker-compose exec backend python manage.py makemigrations
+   docker-compose exec backend python manage.py migrate
+    ```
+    Run these if the RUN python manage.py runserver gives error while running docker-compose
+
 ## Usage
 
 - **Uploading an Image**: Navigate to the frontend interface, upload an image of a urine strip, and submit it for analysis.
